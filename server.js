@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
-// const routes = require('./routes');
+const routes = require('./routes');
 
 const hbs = exphbs.create({});
 
@@ -27,7 +27,7 @@ app.use(express.json());
 
 app.use(session(sessionConfig));
 
-// app.use(routes);
+app.use(routes);
 
 sequelize.sync({ force: false }).then(() =>{
     app.listen(PORT, () => {
