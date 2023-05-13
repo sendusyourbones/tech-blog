@@ -8,7 +8,16 @@ router.get('/', async (req, res) => {
 
         res.render('home', {
             posts,
+            loggedIn: req.session.loggedIn,
         });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+});
+
+router.get('/login', async (req, res) => {
+    try {
+        res.render('user-profile');
     } catch (error) {
         res.status(500).json({ error });
     }
