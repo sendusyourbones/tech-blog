@@ -29,4 +29,20 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// POST /api/users/signup
+router.post('/signup', async (req, res) => {
+    try {
+        const userData = await User.create(req.body);
+
+        req.session.save(() => {
+            req.session.userId = userData.id;
+            req.session.loggedIn = true;
+            res.json({ message: 'You are signed up!' });
+        });
+
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+});
+
 module.exports = router;
