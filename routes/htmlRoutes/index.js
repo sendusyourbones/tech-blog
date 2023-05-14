@@ -9,7 +9,8 @@ router.get('/', async (req, res) => {
                     model: User,
                     attributes: ['id', 'username'],
                 },
-            ]
+            ],
+            order: [['createdAt', 'DESC']],
         });
         const posts = postData.map(post => post.get({ plain: true }));
 
@@ -42,7 +43,8 @@ router.get('/dashboard', async (req, res) => {
                         model: User,
                         attributes: ['id', 'username'],
                     },
-                ]
+                ],
+                order: [['createdAt', 'DESC']],
             });
             const posts = postData.map(post => post.get({ plain: true }));
             res.render('dashboard', {
@@ -77,7 +79,8 @@ router.get('/post/:id', async (req, res) => {
                     model: User,
                     attributes: ['id', 'username'],
                 }
-            ]
+            ],
+            order: [['createdAt', 'DESC']],
         });
         const comments = commentsData.map(comment => comment.get({ plain: true }));
 
