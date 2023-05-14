@@ -2,7 +2,10 @@
 
 <h2>Latest Blog Posts</h2>
 
-{{> posts}}
+{{#each posts as |post|}}
+    <h3><a href="/post/{{post.id}}">{{post.title}}</a></h3>
+    <p>Posted by {{post.user.username}} on {{formatDate post.createdAt}}</p>
+{{/each}}
 
 {{#if loggedIn}}
     <script src="./js/logout.js"></script>

@@ -4,7 +4,10 @@
     <a href="/new-post" id="new-post-btn">Add New Post</a>
     <h2>Your Blog Posts</h2>
     {{#if posts}}
-        {{> posts}}
+        {{#each posts as |post|}}
+            <h3><a href="/dashboard/{{post.id}}">{{post.title}}</a></h3>
+            <p>Posted by {{post.user.username}} on {{formatDate post.createdAt}}</p>
+        {{/each}}
     {{else}}
         <p>You haven't added any blog posts yet. Click "Add New Post" above to get started!</p>
     {{/if}}

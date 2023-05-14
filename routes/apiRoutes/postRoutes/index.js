@@ -16,4 +16,22 @@ router.post('/', async (req, res) => {
     }
 });
 
+// PUT /api/posts/:id (update a post)
+router.put('/:id', async (req, res) => {
+    try {
+        await Post.update({
+            title: req.body.title,
+            content: req.body.content,
+        },
+        {
+            where: {
+                id: req.params.id,
+            },
+        });
+        res.json({ message: 'post updated!' });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+});
+
 module.exports = router;

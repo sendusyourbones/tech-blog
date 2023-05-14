@@ -59,6 +59,37 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
+router.get('/dashboard/:id', async (req, res) => {
+    try {
+        if (req.session.loggedIn) {
+            const postContent = await Post.findByPk(req.params.id);
+            const post = postContent.get({plain: true});
+    
+            const commentsData = await Comment.findAll({
+                where: { post_id: post.id},
+                include: [
+                    {
+                        model: User,
+                        attributes: ['id', 'username'],
+                    }
+                ],
+                order: [['createdAt', 'DESC']],
+            });
+            const comments = commentsData.map(comment => comment.get({ plain: true }));
+            
+            res.render('dashboard-post', {
+                loggedIn: req.session.loggedIn,
+                post,
+                comments,
+            });
+        } else {
+            res.redirect('/login');
+        }    
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+});
+
 router.get('/new-post', async (req, res) => {
     try {
         if (req.session.loggedIn) {
