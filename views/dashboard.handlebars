@@ -3,12 +3,8 @@
 {{#if loggedIn}}
     <button id="newPostBtn">Add New Post</button>
     <h2>Your Blog Posts</h2>
-    {{#if userPosts}}
-        {{#each userPosts as |post|}}
-            <h3>{{post.title}}</h3>
-            <p>{{formatDate post.createdAt}}</p>
-            <p>{{post.content}}</p>
-        {{/each}}
+    {{#if posts}}
+        {{> posts}}
     {{else}}
         <p>You haven't added any blog posts yet. Click "Add New Post" above to get started!</p>
     {{/if}}

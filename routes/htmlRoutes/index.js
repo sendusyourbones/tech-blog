@@ -28,11 +28,11 @@ router.get('/login', async (req, res) => {
 router.get('/dashboard', async (req, res) => {
     try {
         if (req.session.loggedIn) {
-            const userPostData = await Post.findAll({ where: { creator_id: req.session.userId } });
-            const userPosts = userPostData.map(post => post.get({ plain: true }));
+            const postData = await Post.findAll({ where: { creator_id: req.session.userId } });
+            const posts = postData.map(post => post.get({ plain: true }));
             res.render('dashboard', {
                 loggedIn: req.session.loggedIn,
-                userPosts,
+                posts,
             });
         } else {
             res.render('dashboard');
