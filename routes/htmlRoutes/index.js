@@ -27,14 +27,18 @@ router.get('/login', async (req, res) => {
 
 router.get('/dashboard', async (req, res) => {
     try {
-        const userPostData = await Post.findAll({ where: { creator_id: req.session.userId } });
-        const userPosts = userPostData.map(post => post.get({ plain: true }));
-
-        res.render('dashboard', {
-            loggedIn: req.session.loggedIn,
-            userPosts,
-        });
+        if (req.session.loggedIn) {
+            const userPostData = await Post.findAll({ where: { creator_id: req.session.userId } });
+            const userPosts = userPostData.map(post => post.get({ plain: true }));
+            res.render('dashboard', {
+                loggedIn: req.session.loggedIn,
+                userPosts,
+            });
+        } else {
+            res.render('dashboard');
+        }
     } catch (error) {
+        console.log(error);
         res.status(500).json({ error });
     }
 });
