@@ -59,6 +59,21 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
+router.get('/new-post', async (req, res) => {
+    try {
+        if (req.session.loggedIn) {
+            res.render('new-post', {
+                loggedIn: req.session.loggedIn,
+            });
+        } else {
+            res.redirect('/login');
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error });
+    }
+});
+
 router.get('/post/:id', async (req, res) => {
     try {
         const postId = req.params.id;
