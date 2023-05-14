@@ -1,5 +1,5 @@
 // Get elements
-const $submitBtn = document.getElementById('submitBtn');
+const $submitBtn = document.getElementById('submit-btn');
 const $comment = document.getElementById('comment');
 const $commentsDiv = document.getElementById('comments');
 
