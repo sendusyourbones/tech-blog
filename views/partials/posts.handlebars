@@ -1,5 +1,4 @@
 {{#each posts as |post|}}
-    <h3>{{post.title}}</h3>
-    <p>{{formatDate post.createdAt}}</p>
-    <p>{{post.content}}</p>
+    <h3><a href="/post/{{post.id}}">{{post.title}}</a></h3>
+    <p>Posted by {{post.user.username}} on {{formatDate post.createdAt}}</p>
 {{/each}}

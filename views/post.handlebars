@@ -1,0 +1,24 @@
+<h1>{{post.title}}</h1>
+<p>Posted by {{post.user.username}} on {{formatDate post.createdAt}}</p>
+<p>{{post.content}}</p>
+
+<h2>Leave a Comment</h2>
+<form>
+    <textarea id="comment" name="comment" cols="100" rows="3" placeholder="Enter your comment here" required></textarea>
+    <button id="submitBtn">Submit</button>
+</form>
+
+<div id="comments">
+    {{#each comments as |comment|}}
+        <div>
+            <p>{{comment.text}}</p>
+            <p>-{{comment.user.username}} on {{formatDate comment.createdAt}}</p>
+        </div>
+    {{/each}}
+</div>
+
+<script src="../js/comment.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
+{{#if loggedIn}}
+    <script src="../js/logout.js"></script>
+{{/if}}

@@ -12,3 +12,7 @@
     <p>You must be logged in to view the dashboard. Log in or create an account below.</p>
     {{> login-signup}}
 {{/if}}
+
+{{#if loggedIn}}
+    <script src="./js/logout.js"></script>
+{{/if}}
