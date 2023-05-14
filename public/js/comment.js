@@ -16,6 +16,13 @@ $submitBtn.addEventListener('click', async (event) => {
     try {
         // Get information about logged in user
         const userResponse = await fetch('/api/users/loggedin');
+
+        // If user is not logged in, send to login page
+        if (!userResponse.ok) {
+            location.href = '/login';
+            return;
+        }
+
         const userData = await userResponse.json();
 
         // Get postId from URL

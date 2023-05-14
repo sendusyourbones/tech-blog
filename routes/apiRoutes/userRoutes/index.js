@@ -4,8 +4,12 @@ const { User } = require('../../../models');
 // GET /api/users/loggedin (get the logged in user's information)
 router.get('/loggedin', (req, res) => {
     try {
-        const loggedinUser = req.session.user;
-        res.json(loggedinUser);
+        if (req.session.user) {
+            const loggedinUser = req.session.user;
+            res.json(loggedinUser);
+        } else {
+            res.status(400).json({ message: 'no logged in user' });
+        }
     } catch (error) {
         console.log(error);
         res.status(500).json({error});
