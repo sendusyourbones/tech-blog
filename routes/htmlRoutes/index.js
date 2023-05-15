@@ -26,7 +26,18 @@ router.get('/', async (req, res) => {
 
 router.get('/login', async (req, res) => {
     try {
-        res.render('account', {
+        res.render('login', {
+            loggedIn: req.session.loggedIn,
+            cssPath: './css/style.css',
+        });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+});
+
+router.get('/signup', async (req, res) => {
+    try {
+        res.render('signup', {
             loggedIn: req.session.loggedIn,
             cssPath: './css/style.css',
         });
@@ -55,9 +66,7 @@ router.get('/dashboard', async (req, res) => {
                 cssPath: './css/style.css',
             });
         } else {
-            res.render('dashboard', {
-                cssPath: './css/style.css',
-            });
+            res.redirect('/login');
         }
     } catch (error) {
         res.status(500).json({ error });

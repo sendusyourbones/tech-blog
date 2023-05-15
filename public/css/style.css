@@ -26,6 +26,12 @@ textarea {
     width: 100%;
 }
 
+/* Utilities */
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Classes */
 .italic {
     font-style: italic;
@@ -62,16 +68,19 @@ textarea {
     margin-top: 1.5rem;
 }
 
-#login-signup input {
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
+#login-container,
+#signup-container {
+    width: 50%;
 }
 
-#login-signup button {
+#login-container input,
+#signup-container input {
+    width: 75%;
+}
+
+#login-container button,
+#signup-container button {
     width: 50%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 #login-form *,
@@ -93,4 +102,12 @@ textarea {
 
 #new-post-btn {
     width: 300px;
+}
+
+/* Media Queries */
+@media (max-width: 650px) {
+    #login-container,
+    #signup-container {
+        width: 100%;
+    }
 }
