@@ -1,18 +1,22 @@
-<h1>{{post.title}}</h1>
-<p>Posted by {{post.user.username}} on {{formatDate post.createdAt}}</p>
-<p>{{post.content}}</p>
+<div id="post-container">
+    <h1>{{post.title}}</h1>
+    <p class="italic">Posted by {{post.user.username}} on {{formatDate post.createdAt}}</p>
+    <p>{{post.content}}</p>
+</div>
 
-<h2>Leave a Comment</h2>
+<h2 id="comment-section">Leave a Comment</h2>
 <form>
     <textarea id="comment" name="comment" cols="100" rows="3" placeholder="Enter your comment here" required></textarea>
-    <button id="submit-btn">Submit</button>
+    <button id="submit-btn" class="btn btn-success d-block">Submit</button>
 </form>
+
+<hr>
 
 <div id="comments">
     {{#each comments as |comment|}}
         <div>
             <p>{{comment.text}}</p>
-            <p>-{{comment.user.username}} on {{formatDate comment.createdAt}}</p>
+            <p class="italic">-{{comment.user.username}} on {{formatDate comment.createdAt}}</p>
         </div>
     {{/each}}
 </div>

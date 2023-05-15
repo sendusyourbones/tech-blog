@@ -1,23 +1,27 @@
 <h1>Edit Your Post</h1>
 
-<form>
-    <label for="title">Title:</label>
-    <input id="title" type="text" value="{{post.title}}" required/>
-    <p>Posted on {{formatDate post.createdAt}}</p>
-    <textarea id="content" required>{{post.content}}</textarea>
-    <button id="update-btn">Update Post</button>
-    <button id="delete-btn">Delete Post</button>
+<form id="edit-post">
+    <div id="title-container">
+        <label for="title">Title:</label>
+        <input id="title" type="text" value="{{post.title}}" required/>
+    </div>
+    <p class="italic">Posted on {{formatDate post.createdAt}}</p>
+    <textarea id="content" rows="15" required>{{post.content}}</textarea>
+    <button id="update-btn" class="btn btn-success">Update Post</button>
+    <button id="delete-btn" class="btn btn-danger">Delete Post</button>
 </form>
 
-<div id="comments">
-    <h3>Comments</h3>
-    {{#each comments as |comment|}}
-        <div>
-            <p>{{comment.text}}</p>
-            <p>-{{comment.user.username}} on {{formatDate comment.createdAt}}</p>
-        </div>
-    {{/each}}
-</div>
+{{#if comments}}
+    <div id="comments">
+        <h3>Comments</h3>
+        {{#each comments as |comment|}}
+            <div>
+                <p class="comment-text">{{comment.text}}</p>
+                <p class="italic">-{{comment.user.username}} on {{formatDate comment.createdAt}}</p>
+            </div>
+        {{/each}}
+    </div>
+{{/if}}
 
 <script src="../js/editPost.js"></script>
 {{#if loggedIn}}

@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
         res.render('home', {
             posts,
             loggedIn: req.session.loggedIn,
+            cssPath: './css/style.css',
         });
     } catch (error) {
         res.status(500).json({ error });
@@ -27,6 +28,7 @@ router.get('/login', async (req, res) => {
     try {
         res.render('account', {
             loggedIn: req.session.loggedIn,
+            cssPath: './css/style.css',
         });
     } catch (error) {
         res.status(500).json({ error });
@@ -50,9 +52,12 @@ router.get('/dashboard', async (req, res) => {
             res.render('dashboard', {
                 loggedIn: req.session.loggedIn,
                 posts,
+                cssPath: './css/style.css',
             });
         } else {
-            res.render('dashboard');
+            res.render('dashboard', {
+                cssPath: './css/style.css',
+            });
         }
     } catch (error) {
         res.status(500).json({ error });
@@ -81,6 +86,7 @@ router.get('/dashboard/:id', async (req, res) => {
                 loggedIn: req.session.loggedIn,
                 post,
                 comments,
+                cssPath: '../css/style.css',
             });
         } else {
             res.redirect('/login');
@@ -95,6 +101,7 @@ router.get('/new-post', async (req, res) => {
         if (req.session.loggedIn) {
             res.render('new-post', {
                 loggedIn: req.session.loggedIn,
+                cssPath: './css/style.css',
             });
         } else {
             res.redirect('/login');
@@ -134,6 +141,7 @@ router.get('/post/:id', async (req, res) => {
             loggedIn: req.session.loggedIn,
             post,
             comments,
+            cssPath: '../css/style.css',
         });
     } catch (error) {
         res.status(500).json({ error });
