@@ -31,8 +31,7 @@ Create a file called `.env` in the root directory and fill in the following vari
 
 ## Usage
 
-<!-- Link to be added after deployment -->
-View the deployed application here.
+View the [deployed application](https://frozen-lake-90166.herokuapp.com/) here.
 
 Instructions for using the application:
 - If you do not have an account and wish to add your own post or comment on posts, first create an account:
@@ -45,6 +44,8 @@ Instructions for using the application:
     - Click on a post title to edit the title or content, or to delete the post
     - To add a post, click "Add New Post" and enter a title and content and click "Add Post"
 - You will be automatically logged out after a period of inactivity, or you can click "Log Out" in the top-right corner to log out
+
+![Screenshot of application Home showing navigation and blog posts](./public/assets/screenshot.jpg)
 
 ## Credits
 
