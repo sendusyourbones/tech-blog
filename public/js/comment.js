@@ -40,12 +40,14 @@ $submitBtn.addEventListener('click', async (event) => {
         // Create paragraph with comment text
         const $textPara = document.createElement('p');
         $textPara.textContent = commentData.text;
+        $textPara.setAttribute('class', 'comment-text');
 
         // Create paragraph with author and timestamp
         const $authorPara = document.createElement('p');
         const date = new Date(Date.parse(commentData.createdAt));
         const timestamp = luxon.DateTime.fromJSDate(date).toFormat('ff');
         $authorPara.textContent = `-${userData.username} on ${timestamp}`;
+        $authorPara.setAttribute('class', 'italic');
 
         // Create containing div and add paragraphs to it
         const $commentDiv = document.createElement('div');
