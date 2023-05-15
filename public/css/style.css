@@ -3,9 +3,12 @@ nav {
     background-color: #cbabeb;
 }
 
+body {
+    background-color: #97d7fc;
+}
+
 main {
     padding: 20px;
-    background-color: #97d7fc;
 }
 
 h1 {
