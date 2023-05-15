@@ -24,7 +24,6 @@
     "handlebars": "^4.7.7",
     "luxon": "^3.3.0",
     "mysql2": "^3.3.0",
-    "sequelize": "^6.31.1",
-    "uuid": "8.3.2"
+    "sequelize": "^6.31.1"
   }
 }
