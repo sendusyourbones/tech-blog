@@ -1,6 +1,6 @@
 <div id="post-container">
     <h1>{{post.title}}</h1>
-    <p class="italic">Posted by {{post.user.username}} on {{formatDate post.createdAt}}</p>
+    {{> attribution}}
     <p>{{post.content}}</p>
 </div>
 
@@ -13,12 +13,7 @@
 <hr>
 
 <div id="comments">
-    {{#each comments as |comment|}}
-        <div>
-            <p>{{comment.text}}</p>
-            <p class="italic">-{{comment.user.username}} on {{formatDate comment.createdAt}}</p>
-        </div>
-    {{/each}}
+    {{> comments}}
 </div>
 
 <script src="../js/comment.js"></script>

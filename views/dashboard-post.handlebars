@@ -5,7 +5,7 @@
         <label for="title">Title:</label>
         <input id="title" type="text" value="{{post.title}}" required/>
     </div>
-    <p class="italic">Posted on {{formatDate post.createdAt}}</p>
+    {{> timestamp}}
     <textarea id="content" rows="15" required>{{post.content}}</textarea>
     <button id="update-btn" class="btn btn-success">Update Post</button>
     <button id="delete-btn" class="btn btn-danger">Delete Post</button>
@@ -14,12 +14,7 @@
 {{#if comments}}
     <div id="comments">
         <h3>Comments</h3>
-        {{#each comments as |comment|}}
-            <div>
-                <p class="comment-text">{{comment.text}}</p>
-                <p class="italic">-{{comment.user.username}} on {{formatDate comment.createdAt}}</p>
-            </div>
-        {{/each}}
+        {{> comments}}
     </div>
 {{/if}}
 

@@ -1,0 +1,6 @@
+{{#each comments as |comment|}}
+    <div>
+        <p class="comment-text">{{comment.text}}</p>
+        <p class="italic">-{{comment.user.username}} on {{formatDate comment.createdAt}}</p>
+    </div>
+{{/each}}
