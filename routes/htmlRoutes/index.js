@@ -171,7 +171,7 @@ router.get('/post/:id', async (req, res) => {
         const comments = commentsData.map(comment => comment.get({ plain: true }));
 
         // Render template
-        res.render('post', {
+        res.render('public-post', {
             loggedIn: req.session.loggedIn,
             post,
             comments,
