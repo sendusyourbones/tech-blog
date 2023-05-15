@@ -4,11 +4,14 @@ const UUID = require('UUID');
 const bcrypt = require('bcrypt');
 
 class User extends Model {
+    // Method to check password on login
     checkPassword(loginPw)  {
         return bcrypt.compareSync(loginPw, this.password);
     }
 }
 
+// Define the User model
+// Contains id, username, and password
 User.init(
     {
         id: {
@@ -28,6 +31,7 @@ User.init(
     },
     {
         hooks: {
+            // Hook to hash password before creating a new user
             beforeCreate: async (newUserData) => {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData;

@@ -4,6 +4,8 @@ const UUID = require('UUID');
 
 class Post extends Model {}
 
+// Define the Post model
+// Contains id, title, content, and creator_id foreign key
 Post.init(
     {
         id: {

@@ -4,6 +4,8 @@ const UUID = require('UUID');
 
 class Comment extends Model {}
 
+// Define the Comment model
+// Contains id, text, post_id foreign key, and poster_id foreign key
 Comment.init(
     {
         id: {

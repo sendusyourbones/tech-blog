@@ -1,3 +1,4 @@
+// Get elements
 const $addPostBtn = document.getElementById('add-post-btn');
 const $title = document.getElementById('title');
 const $content = document.getElementById('content');

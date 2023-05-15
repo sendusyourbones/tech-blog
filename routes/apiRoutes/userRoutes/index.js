@@ -16,7 +16,7 @@ router.get('/loggedin', (req, res) => {
     }
 });
 
-// POST /api/users/login
+// POST /api/users/login (check login credentials and log in the user)
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({ where: { username: req.body.username } });
@@ -33,34 +33,34 @@ router.post('/login', async (req, res) => {
             return;
         }
         
+        // Save the user's data and that they are logged in to the session
         req.session.save(() => {
             req.session.user = userData;
             req.session.loggedIn = true;
             res.json({ message: 'You are logged in!' });
         });
-
     } catch (error) {
         res.status(500).json({ error });
     }
 });
 
-// POST /api/users/signup
+// POST /api/users/signup (create a new user account)
 router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(req.body);
 
+        // Save the user's data and that they are logged in to the session
         req.session.save(() => {
             req.session.user = userData;
             req.session.loggedIn = true;
             res.json({ message: 'You are signed up!' });
         });
-
     } catch (error) {
         res.status(500).json({ error });
     }
 });
 
-// POST /api/users/logout
+// POST /api/users/logout (log out user)
 router.post('/logout', async (req, res) => {
     try {
         if (req.session.loggedIn) {
