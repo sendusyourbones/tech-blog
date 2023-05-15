@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
         res.render('home', {
             posts,
             loggedIn: req.session.loggedIn,
-            cssPath: './css/style.css',
+            pathPrefix: '.',
         });
     } catch (error) {
         res.status(500).json({ error });
@@ -32,7 +32,7 @@ router.get('/login', async (req, res) => {
     try {
         res.render('login', {
             loggedIn: req.session.loggedIn,
-            cssPath: './css/style.css',
+            pathPrefix: '.',
         });
     } catch (error) {
         res.status(500).json({ error });
@@ -44,7 +44,7 @@ router.get('/signup', async (req, res) => {
     try {
         res.render('signup', {
             loggedIn: req.session.loggedIn,
-            cssPath: './css/style.css',
+            pathPrefix: '.',
         });
     } catch (error) {
         res.status(500).json({ error });
@@ -73,7 +73,7 @@ router.get('/dashboard', async (req, res) => {
             res.render('dashboard', {
                 loggedIn: req.session.loggedIn,
                 posts,
-                cssPath: './css/style.css',
+                pathPrefix: '.',
             });
         // If not logged in go to Log In screen
         } else {
@@ -111,7 +111,7 @@ router.get('/dashboard/:id', async (req, res) => {
                 loggedIn: req.session.loggedIn,
                 post,
                 comments,
-                cssPath: '../css/style.css',
+                pathPrefix: '..',
             });
         // If not logged in go to Log In screen
         } else {
@@ -130,7 +130,7 @@ router.get('/new-post', async (req, res) => {
             // Render template
             res.render('new-post', {
                 loggedIn: req.session.loggedIn,
-                cssPath: './css/style.css',
+                pathPrefix: '.',
             });
         // If not logged in go to Log In screen
         } else {
@@ -175,7 +175,7 @@ router.get('/post/:id', async (req, res) => {
             loggedIn: req.session.loggedIn,
             post,
             comments,
-            cssPath: '../css/style.css',
+            pathPrefix: '..',
         });
     } catch (error) {
         res.status(500).json({ error });
